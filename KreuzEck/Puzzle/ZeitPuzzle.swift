@@ -19,6 +19,8 @@ class ZWord : Word {
     }
 }
 
+
+//Zeit JSON Structs
 struct ZeitPoint : Codable {
     var x: Int
     var y: Int
@@ -66,37 +68,6 @@ struct ZeitList : Codable {
     var spielname: String
 }
 
-//Parsing Zeit Puzzle
-/*
-extension Word: XMLIndexerDeserializable {
-    
-    static func deserialize(_ node: XMLIndexer) throws -> Word {
-        return try Word(
-            num:    node.value(ofAttribute: "no"),
-            length: {
-                do {
-                    let str: String = try node.value(ofAttribute: "answer")
-                    return str.count
-                }
-                catch {
-                    return 0
-                }
-        }(),
-            column: node.value(ofAttribute: "xC") - 1, //1-based index to 0-based indexing
-            row:    node.value(ofAttribute: "yC") - 1,
-            hint:   node.value(),
-            answer: node.value(ofAttribute: "answer"),
-            dir:    node.value(ofAttribute: "dir")
-        )
-    }
-
-
-extension Direction : XMLAttributeDeserializable {
-    public static func deserialize(_ attribute: XMLAttribute) -> Direction {
-        return (attribute.text == "h") ? Direction.horizontal : Direction.vertical
-    }
-}
- */
 
 // Specialization for Zeit Puzzle
 
@@ -127,9 +98,6 @@ class ZeitPuzzle : WordPuzzle {
             self.crossWordNum   = Int(json.meta.key)!
             self.numRows        = 40
             self.numCols        = 40
-            
-            
-            
             
         } catch {
             print("Error: \(error)")

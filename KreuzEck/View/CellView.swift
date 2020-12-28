@@ -95,14 +95,14 @@ class CellView: UIView {
     
     public var erroneous = false {
         didSet {
-            bgView.backgroundColor = erroneous ? redColor.withAlphaComponent(0.2): UIColor.white
+            bgView.backgroundColor = erroneous ? redColor.withAlphaComponent(0.2): UIColor.systemBackground
         }
     }
     
     public var highlighted = false {
         didSet {
             if !self.selected { //selected has precedence
-                bgView.backgroundColor = highlighted ? highColor.withAlphaComponent(0.2)  : UIColor.white
+                bgView.backgroundColor = highlighted ? highColor.withAlphaComponent(0.2)  : UIColor.systemBackground
             }
         }
     }
@@ -110,7 +110,7 @@ class CellView: UIView {
     public var selected = false
         {
         didSet {
-            bgView.backgroundColor = selected ? highColor.withAlphaComponent(0.5) : UIColor.white
+            bgView.backgroundColor = selected ? highColor.withAlphaComponent(0.5) : UIColor.systemBackground
         }
     }
     

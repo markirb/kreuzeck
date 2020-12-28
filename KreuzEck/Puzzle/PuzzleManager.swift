@@ -19,7 +19,7 @@ enum PuzzleCategory {
 class PuzzleManager : NSObject {
     
     var puzzles = [String: [String: Puzzle]]() //Dict of Category => Title => Puzzle
-
+    
     
     
     static let sharedInstance: PuzzleManager = {
@@ -35,31 +35,37 @@ class PuzzleManager : NSObject {
             let catergoriesArray = try fileManager.contentsOfDirectory(atPath: docsPath)
             for categoryName in catergoriesArray {
                 
+                
                 instance.puzzles[categoryName] = [String: Puzzle]()
                 
                 let categoryPath = docsPath + "/" + categoryName
-                
-                let puzzlesArray = try fileManager.contentsOfDirectory(atPath: categoryPath)
-                for puzzleFilename in puzzlesArray {
-                    let puzzlePath = categoryPath + "/" + puzzleFilename
-                    var puzzle: Puzzle?
+                do {
+                    let puzzlesArray = try fileManager.contentsOfDirectory(atPath: categoryPath)
                     
-                    switch(categoryName) {
-                    case "Zeit":
-                        puzzle = ZeitPuzzle(contentPath: puzzlePath)
-                    case "Sudoku":
-                        puzzle = SudokuPuzzle(contentPath: puzzlePath)
-                    case "Str8ts":
-                        puzzle = StraightsPuzzle(contentPath: puzzlePath)
-                    default:
-                        puzzle = nil
+                    for puzzleFilename in puzzlesArray {
+                        let puzzlePath = categoryPath + "/" + puzzleFilename
+                        var puzzle: Puzzle?
+                        
+                        switch(categoryName) {
+                        case "Zeit":
+                            puzzle = ZeitPuzzle(contentPath: puzzlePath)
+                        case "Sudoku":
+                            puzzle = SudokuPuzzle(contentPath: puzzlePath)
+                        case "Str8ts":
+                            puzzle = StraightsPuzzle(contentPath: puzzlePath)
+                        default:
+                            puzzle = nil
+                        }
+                        
+                        if let puzzle = puzzle {
+                            instance.puzzles[categoryName]![puzzleFilename] = puzzle
+                            puzzle.category = categoryName
+                            puzzle.identifier = puzzleFilename
+                        }
                     }
+                }
+                catch {
                     
-                    if let puzzle = puzzle {
-                        instance.puzzles[categoryName]![puzzleFilename] = puzzle
-                        puzzle.category = categoryName
-                        puzzle.identifier = puzzleFilename
-                    }
                 }
             }
         }

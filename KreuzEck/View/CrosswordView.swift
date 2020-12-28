@@ -135,6 +135,8 @@ class CrosswordView : UIView {
             }
         }
     
+        self.image.image = nil
+        self.image.frame = .zero
         self.addSubview(self.image)
         
         grid.forEach { $0.forEach{ $0.prepareForReuse()} }

@@ -10,8 +10,7 @@ Dependencies: none
 
 
 TODO:
-support dark mode
-migrate to swift ui
+ - migrate to swift ui
 
 
 

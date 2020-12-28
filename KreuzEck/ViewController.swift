@@ -72,7 +72,6 @@ class ViewController: UIViewController {
         questionLabel.text = ""
         
         scrollView.contentSize = crosswordView.frame.size
-        let enableGesture = false
 
         crosswordView.addGestureRecognizer(strikeThroughGestureRecognizer)
         strikeThroughGestureRecognizer.addTarget( self, action: #selector(strikeWord))
