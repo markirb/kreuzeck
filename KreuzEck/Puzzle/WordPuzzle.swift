@@ -55,7 +55,7 @@ class WordPuzzle : Puzzle {
         return cells
     }
     
-    //proposes other words to highlight and a new direction? depending on stuff
+    //proposes other cells to highlight and a new direction depending on current direction and cell
     override func proposeDirectionAndHighlightedCellsForSelectCellView(_ cellView: CellView, grid: [[CellView]], direction: Direction) -> (Direction, [CellView]) {
         
         var direction = direction
@@ -74,7 +74,6 @@ class WordPuzzle : Puzzle {
         let highlightCells = wordCellsForWordIndex(wordIndex, grid: grid, direction: direction)
         
     
-        
         
         return (direction, highlightCells)
     }

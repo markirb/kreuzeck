@@ -140,7 +140,7 @@ class ZeitPuzzle : WordPuzzle {
 
                     }
                     catch{
-                        
+                        print("Error during parsing image")
                     }
                 }
             }
@@ -236,7 +236,7 @@ class ZeitPuzzle : WordPuzzle {
         if let url = URL(string: urlString) {
             
             let request = URLRequest(url: url,
-                                     cachePolicy: URLRequest.CachePolicy.useProtocolCachePolicy,
+                                     cachePolicy: .useProtocolCachePolicy,
                                      timeoutInterval: TimeInterval(5)
             )
             
@@ -251,6 +251,7 @@ class ZeitPuzzle : WordPuzzle {
                     // check for http errors
                     print("statusCode should be 200, but is \(httpStatus.statusCode)")
                     print("response = \(response!)")
+                    return
                 }
                 
                 let decoder = JSONDecoder()
@@ -264,10 +265,10 @@ class ZeitPuzzle : WordPuzzle {
                     }
                 }
                 catch {
-                    
+                    print("Error parsing available list")
                 }
                 
-                //if not get and save it into folder
+                //if not get and save it to somewhere
             }
             
             

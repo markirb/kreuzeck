@@ -25,7 +25,7 @@ enum InputType {
     case numeric
 }
 
-class Puzzle : NSObject {
+class Puzzle {
     
     var identifier: String = ""
     var category: String = ""
@@ -53,7 +53,6 @@ class Puzzle : NSObject {
     
     
     init(contentPath: String){
-        super.init()
         self.contentPath = contentPath
     }
 

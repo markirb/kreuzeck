@@ -39,6 +39,7 @@
 		96A188F41FFE3C52008989D8 /* LetterGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96A188F11FFE3C51008989D8 /* LetterGestureRecognizer.swift */; };
 		96A188F71FFE3F77008989D8 /* StrokeCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96A188F61FFE3F76008989D8 /* StrokeCollection.swift */; };
 		96EFF1A91FFF702500363087 /* CrosswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96EFF1A81FFF702500363087 /* CrosswordView.swift */; };
+		A1D1B63B259A842D0010B83E /* ZeitCellViewNew.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D1B63A259A842D0010B83E /* ZeitCellViewNew.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -76,6 +77,7 @@
 		96A188F11FFE3C51008989D8 /* LetterGestureRecognizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LetterGestureRecognizer.swift; sourceTree = "<group>"; };
 		96A188F61FFE3F76008989D8 /* StrokeCollection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StrokeCollection.swift; sourceTree = "<group>"; };
 		96EFF1A81FFF702500363087 /* CrosswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrosswordView.swift; sourceTree = "<group>"; };
+		A1D1B63A259A842D0010B83E /* ZeitCellViewNew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZeitCellViewNew.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -175,6 +177,7 @@
 				2897FD032001520F00D47A0F /* CellView.xib */,
 				2897FCFF2001330800D47A0F /* ZeitCellView.swift */,
 				2870ADB01FF922FF0084B570 /* ZeitCellView.xib */,
+				A1D1B63A259A842D0010B83E /* ZeitCellViewNew.swift */,
 				963EC6AB1FFFB43D0012E309 /* XibFile.swift */,
 			);
 			path = View;
@@ -286,6 +289,7 @@
 				96EFF1A91FFF702500363087 /* CrosswordView.swift in Sources */,
 				2897FCFE20011BE200D47A0F /* StraightsPuzzle.swift in Sources */,
 				28AA015620056BED00D52581 /* mnist_alpha.mlmodel in Sources */,
+				A1D1B63B259A842D0010B83E /* ZeitCellViewNew.swift in Sources */,
 				2897FD0620015F4900D47A0F /* mnist_num.mlmodel in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
