@@ -39,8 +39,20 @@
 		96A188F41FFE3C52008989D8 /* LetterGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96A188F11FFE3C51008989D8 /* LetterGestureRecognizer.swift */; };
 		96A188F71FFE3F77008989D8 /* StrokeCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96A188F61FFE3F76008989D8 /* StrokeCollection.swift */; };
 		96EFF1A91FFF702500363087 /* CrosswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96EFF1A81FFF702500363087 /* CrosswordView.swift */; };
+		A123C80A259F863800DDBEF1 /* KreuzEckTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A123C809259F863800DDBEF1 /* KreuzEckTests.swift */; };
+		A123C818259F9DB800DDBEF1 /* Prview.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A123C817259F9DB800DDBEF1 /* Prview.xcassets */; };
 		A1D1B63B259A842D0010B83E /* ZeitCellViewNew.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D1B63A259A842D0010B83E /* ZeitCellViewNew.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		A123C80C259F863800DDBEF1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2805F6931FF8043B0027D874 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2805F69A1FF8043B0027D874;
+			remoteInfo = KreuzEck;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		2805C44F1FF81BAF00529D67 /* CoreML.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreML.framework; path = System/Library/Frameworks/CoreML.framework; sourceTree = SDKROOT; };
@@ -77,6 +89,10 @@
 		96A188F11FFE3C51008989D8 /* LetterGestureRecognizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LetterGestureRecognizer.swift; sourceTree = "<group>"; };
 		96A188F61FFE3F76008989D8 /* StrokeCollection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StrokeCollection.swift; sourceTree = "<group>"; };
 		96EFF1A81FFF702500363087 /* CrosswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrosswordView.swift; sourceTree = "<group>"; };
+		A123C807259F863800DDBEF1 /* KreuzEckTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KreuzEckTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		A123C809259F863800DDBEF1 /* KreuzEckTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KreuzEckTests.swift; sourceTree = "<group>"; };
+		A123C80B259F863800DDBEF1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A123C817259F9DB800DDBEF1 /* Prview.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Prview.xcassets; sourceTree = "<group>"; };
 		A1D1B63A259A842D0010B83E /* ZeitCellViewNew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZeitCellViewNew.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -92,14 +108,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		A123C804259F863800DDBEF1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
 		2805F6921FF8043B0027D874 = {
 			isa = PBXGroup;
 			children = (
+				A123C817259F9DB800DDBEF1 /* Prview.xcassets */,
 				9626538E1FFF818E0040CA8F /* Puzzles */,
 				2805F69D1FF8043B0027D874 /* KreuzEck */,
+				A123C808259F863800DDBEF1 /* KreuzEckTests */,
 				2805F69C1FF8043B0027D874 /* Products */,
 				2850B20C1FF806FE00A442F9 /* Frameworks */,
 			);
@@ -109,6 +134,7 @@
 			isa = PBXGroup;
 			children = (
 				2805F69B1FF8043B0027D874 /* KreuzEck.app */,
+				A123C807259F863800DDBEF1 /* KreuzEckTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -192,6 +218,15 @@
 			path = Gesture;
 			sourceTree = "<group>";
 		};
+		A123C808259F863800DDBEF1 /* KreuzEckTests */ = {
+			isa = PBXGroup;
+			children = (
+				A123C809259F863800DDBEF1 /* KreuzEckTests.swift */,
+				A123C80B259F863800DDBEF1 /* Info.plist */,
+			);
+			path = KreuzEckTests;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -212,13 +247,31 @@
 			productReference = 2805F69B1FF8043B0027D874 /* KreuzEck.app */;
 			productType = "com.apple.product-type.application";
 		};
+		A123C806259F863800DDBEF1 /* KreuzEckTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A123C80E259F863800DDBEF1 /* Build configuration list for PBXNativeTarget "KreuzEckTests" */;
+			buildPhases = (
+				A123C803259F863800DDBEF1 /* Sources */,
+				A123C804259F863800DDBEF1 /* Frameworks */,
+				A123C805259F863800DDBEF1 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A123C80D259F863800DDBEF1 /* PBXTargetDependency */,
+			);
+			name = KreuzEckTests;
+			productName = KreuzEckTests;
+			productReference = A123C807259F863800DDBEF1 /* KreuzEckTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		2805F6931FF8043B0027D874 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0920;
+				LastSwiftUpdateCheck = 1230;
 				LastUpgradeCheck = 1210;
 				ORGANIZATIONNAME = "Markus Gnadl";
 				TargetAttributes = {
@@ -226,6 +279,10 @@
 						CreatedOnToolsVersion = 9.2;
 						LastSwiftMigration = 1210;
 						ProvisioningStyle = Automatic;
+					};
+					A123C806259F863800DDBEF1 = {
+						CreatedOnToolsVersion = 12.3;
+						TestTargetID = 2805F69A1FF8043B0027D874;
 					};
 				};
 			};
@@ -243,6 +300,7 @@
 			projectRoot = "";
 			targets = (
 				2805F69A1FF8043B0027D874 /* KreuzEck */,
+				A123C806259F863800DDBEF1 /* KreuzEckTests */,
 			);
 		};
 /* End PBXProject section */
@@ -258,6 +316,14 @@
 				2805F6A61FF8043B0027D874 /* Assets.xcassets in Resources */,
 				2897FD042001521000D47A0F /* CellView.xib in Resources */,
 				2805F6A41FF8043B0027D874 /* Main.storyboard in Resources */,
+				A123C818259F9DB800DDBEF1 /* Prview.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A123C805259F863800DDBEF1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -294,7 +360,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		A123C803259F863800DDBEF1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A123C80A259F863800DDBEF1 /* KreuzEckTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		A123C80D259F863800DDBEF1 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 2805F69A1FF8043B0027D874 /* KreuzEck */;
+			targetProxy = A123C80C259F863800DDBEF1 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		2805F6A21FF8043B0027D874 /* Main.storyboard */ = {
@@ -433,6 +515,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "";
 				DEVELOPMENT_TEAM = L39CF8864G;
 				INFOPLIST_FILE = KreuzEck/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -451,6 +534,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "";
 				DEVELOPMENT_TEAM = L39CF8864G;
 				INFOPLIST_FILE = KreuzEck/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -461,6 +545,53 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		A123C80F259F863800DDBEF1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = L39CF8864G;
+				INFOPLIST_FILE = KreuzEckTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.3;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = net.flobby.KreuzEckTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/KreuzEck.app/KreuzEck";
+			};
+			name = Debug;
+		};
+		A123C810259F863800DDBEF1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = L39CF8864G;
+				INFOPLIST_FILE = KreuzEckTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.3;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = net.flobby.KreuzEckTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/KreuzEck.app/KreuzEck";
 			};
 			name = Release;
 		};
@@ -481,6 +612,15 @@
 			buildConfigurations = (
 				2805F6AE1FF8043B0027D874 /* Debug */,
 				2805F6AF1FF8043B0027D874 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A123C80E259F863800DDBEF1 /* Build configuration list for PBXNativeTarget "KreuzEckTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A123C80F259F863800DDBEF1 /* Debug */,
+				A123C810259F863800DDBEF1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

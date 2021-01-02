@@ -59,11 +59,7 @@ import SwiftUI
 let cellsize  = CGFloat(48.0)
 
 
-class CellNew {
-    init(_ content: Character){
-        self.content = content
-        
-    }
+class CellNew : NSObject {
     
     var editable = false
     
@@ -86,7 +82,7 @@ class ZeitCellNew : CellNew {
 
 struct CrossWordViewNew: View {
     
-    var grid = [[Character]]()
+    var grid = [[ZeitCellNew]]()
     
     var body: some View {
         VStack(
@@ -104,7 +100,8 @@ struct CrossWordViewNew: View {
                         row,
                         id: \.self
                     ) {
-                        ZeitCellViewNew(content: "\($0)").frame(width: cellsize-1, height: cellsize-1, alignment: .center)
+                        let content = $0
+                        ZeitCellViewNew(content: content).frame(width: cellsize-1, height: cellsize-1, alignment: .center)
                     }
                 }
             }
@@ -114,15 +111,47 @@ struct CrossWordViewNew: View {
 
 struct ZeitCellViewNew: View {
     
-    var content: String
+    var content: ZeitCellNew
     
     var body: some View {
-        Text(content).frame(width: cellsize, height: cellsize, alignment: .center).border(Color.black)
+        let c = String(content.solution ?? " ")
+        var num: String = ""
+        if let c = content.num {
+            num = String(c)
+        }
+        var edges = [Edge]()
+        if content.startOfHor {
+            edges.append(Edge.leading)
+        }
+        if content.endOfHor {
+            edges.append(Edge.trailing)
+        }
+        if content.startOfVer {
+            edges.append(Edge.top)
+        }
+        if content.endOfVer {
+            edges.append(Edge.bottom)
+        }
+        return Text("\(c)").frame(width: cellsize, height: cellsize, alignment: .center).border(Color.black).overlay(Text(num).font(.callout)).border(width: 1.5, edges: edges, color: .black)
     }
 }
 
 struct ZeitCellViewNew_Previews: PreviewProvider {
     static var previews: some View {
-        CrossWordViewNew(grid: [["A","S","D"],["F","J","4"]])
+        let letter = ZeitCellNew()
+        letter.content = "a"
+        letter.solution = "b"
+        var grid = [[letter]]
+        
+       
+        
+        
+        let puzzle = ZeitPuzzle(contentPath: "")
+        puzzle.load(parseString: content)
+        grid = puzzle.configureModel()
+        
+    
+        
+        return CrossWordViewNew(grid: grid)
     }
 }

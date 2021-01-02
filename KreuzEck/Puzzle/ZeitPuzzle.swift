@@ -75,7 +75,7 @@ class ZeitPuzzle : WordPuzzle {
     
     
     override func load(parseString: String) {
-
+        
         let decoder = JSONDecoder()
         
         do {
@@ -96,13 +96,13 @@ class ZeitPuzzle : WordPuzzle {
             }
             self.crossWordTitle = json.meta.label
             self.crossWordNum   = Int(json.meta.key)!
-            self.numRows        = 40
-            self.numCols        = 40
+            self.numRows        = 15
+            self.numCols        = 25
             
         } catch {
             print("Error: \(error)")
         }
-
+        
         
         self.cellGenerator = {
             let cell: ZeitCellView = ZeitCellView.fromNib()
@@ -137,7 +137,7 @@ class ZeitPuzzle : WordPuzzle {
                         let frame = CGRect(x: Double(pic.position.x) * grid_size + 1, y: Double(pic.position.y) * grid_size + 1, width: Double(pic.size.width) * grid_size - 1, height: Double(pic.size.height) * grid_size - 1)
                         image.frame = frame;
                         
-
+                        
                     }
                     catch{
                         print("Error during parsing image")
@@ -151,13 +151,13 @@ class ZeitPuzzle : WordPuzzle {
                 c.startOfHor = (i == 0)
                 c.endOfHor = (i == word.length-1)
                 c.editable = true
-
+                
                 c.solution = String(char)
                 
                 if let c = c as? ZeitCellView {
                     c.wordIndexHorizontal = wordIdx
                 }
-  
+                
             }
         }
         
@@ -229,6 +229,128 @@ class ZeitPuzzle : WordPuzzle {
         
     }
     
+    func configureModel() -> [[ZeitCellNew]] {
+        
+        var grid = Array(repeating: Array(repeating: ZeitCellNew(), count: self.numCols), count: self.numRows)
+        
+        for i in 0..<self.numRows {
+            for j in 0..<self.numCols {
+                grid[i][j] = ZeitCellNew()
+            }
+        }
+        
+        
+        for (wordIdx, word) in self.wordsHorizontal.enumerated() {
+            
+            //Zeit specific
+            let cell = grid[word.row][word.column]
+            cell.num = word.num
+            
+            
+            //only in horizonal words
+            if let zword = word as? ZWord {
+                if let pic = zword.picture {
+                    do {
+                        let url = URL(string: pic.url)
+                        let data = try Data(contentsOf: url!)
+                        
+                        let img = UIImage(data: data)
+                        //image.image = img
+                        let grid_size = 48.0 //TODO: move upward
+                        let frame = CGRect(x: Double(pic.position.x) * grid_size + 1, y: Double(pic.position.y) * grid_size + 1, width: Double(pic.size.width) * grid_size - 1, height: Double(pic.size.height) * grid_size - 1)
+                        //image.frame = frame;
+                        
+                        
+                    }
+                    catch{
+                        print("Error during parsing image")
+                    }
+                }
+            }
+            
+            
+            for (i, char) in word.answer.enumerated() {
+                let c = grid[word.row][word.column + i]
+                c.startOfHor = (i == 0)
+                c.endOfHor = (i == word.length-1)
+                c.editable = true
+                
+                c.solution = char
+                
+                
+                c.wordIndexHorizontal = wordIdx
+                
+            }
+        }
+        
+        for (wordIdx,word) in self.wordsVertical.enumerated() {
+            
+            //Zeit specific
+            let cell = grid[word.row][word.column] 
+            cell.num = word.num
+            
+            
+            //Generalized CrossWord Stuff
+            for (i, char) in word.answer.enumerated() {
+                let c = grid[word.row+i][word.column]
+                c.startOfVer = (i == 0)
+                c.endOfVer = (i == word.length-1)
+                c.editable = true
+                
+                c.solution = char
+                
+                
+                c.wordIndexVertical = wordIdx
+                
+            }
+        }
+        
+        // specific for Zeit
+        //search if we need to draw a big border by clearing end of words we do not need to mark
+        for (row_idx, row) in grid.enumerated() {
+            for (col_idx, c) in row.enumerated() {
+                //if let c = c as? ZeitCellView {
+                //if c.isActive() {
+                //when previous cell is endOfHor or endOfVer, then we need to be the start to see the border
+                if(col_idx >= 1) {
+                    c.startOfHor =  c.startOfHor || grid[row_idx][col_idx-1].endOfHor
+                }
+                if(row_idx >= 1) {
+                    c.startOfVer = c.startOfVer || grid[row_idx-1][col_idx].endOfVer
+                }
+                //}
+                //}
+                
+                if(c.endOfHor) {
+                    //look ahead one col and see if it is active
+                    if (col_idx + 1) >= self.numCols {
+                        c.endOfHor = false
+                    }
+                    else {
+                        c.endOfHor = grid[row_idx][col_idx+1].editable
+                    }
+                }
+                if(c.endOfVer) {
+                    //look ahead one col and see if it is active
+                    if (row_idx + 1) >= self.numRows {
+                        c.endOfVer = false
+                    }
+                    else {
+                        c.endOfVer = grid[row_idx+1][col_idx].editable
+                    }
+                }
+            }
+        }
+        
+        for row in grid {
+            for v in row {
+                let active = v.editable
+                //v.isHidden = !active
+            }
+        }
+        return grid
+    }
+    
     class func generateNewPuzzle() {
         
         //you will have to find that URL for yourself
@@ -276,6 +398,6 @@ class ZeitPuzzle : WordPuzzle {
             
         }
     }
-
+    
     
 }
