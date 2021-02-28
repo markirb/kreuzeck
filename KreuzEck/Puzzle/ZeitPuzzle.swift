@@ -87,7 +87,7 @@ class ZeitPuzzle : WordPuzzle {
                     let w = ZWord(num: question.key, length: q.length, column: question.position.x, row: question.position.y, hint: q.question, answer: qanswer, dir: .horizontal, picture: q.picture)
                     wordsHorizontal.append(w)
                 }
-                else if let q = question.vertical{
+                if let q = question.vertical{
                     let qanswer = q.answer ?? String(repeating: " ", count: q.length)
                     let w = ZWord(num: question.key, length: q.length, column: question.position.x, row: question.position.y, hint: q.question, answer: qanswer, dir: .vertical, picture: q.picture)
                     wordsVertical.append(w)
