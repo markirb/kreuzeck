@@ -127,7 +127,7 @@ class CellView: UIView {
     
 }
 
-protocol CellViewDelegate: class
+protocol CellViewDelegate: AnyObject
 {
     func cellViewTouched(cellView: CellView)
 }

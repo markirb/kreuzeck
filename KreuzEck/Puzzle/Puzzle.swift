@@ -75,15 +75,25 @@ class Puzzle {
     }
     
     func loadSolution() -> [[String?]] {
-        if let ourData = NSKeyedUnarchiver.unarchiveObject(withFile: saveFilePath) as? [[String?]] {
-            return ourData
+        let url = URL.init(fileURLWithPath: saveFilePath)
+        if let data = try? Data.init(contentsOf: url) {
+            if let ourData = try? NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(data) as? [[String?]] {
+                return ourData
+            }
         }
+            
+        
         return []
     }
     
     func saveSolution(input: [[String?]]) {
-        if( !NSKeyedArchiver.archiveRootObject(input, toFile: saveFilePath) ) {
-            print("Something went wrong")
+        if let data = try? NSKeyedArchiver.archivedData(withRootObject: input, requiringSecureCoding: false) {
+            let url = URL.init(fileURLWithPath: saveFilePath)
+            do {
+                try data.write(to: url)
+            } catch {
+                print("Something went wrong")
+            }
         }
     }
     

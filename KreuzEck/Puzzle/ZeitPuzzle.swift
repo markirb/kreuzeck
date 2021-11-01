@@ -254,10 +254,10 @@ class ZeitPuzzle : WordPuzzle {
                         let url = URL(string: pic.url)
                         let data = try Data(contentsOf: url!)
                         
-                        let img = UIImage(data: data)
+                        _ = UIImage(data: data)
                         //image.image = img
                         let grid_size = 48.0 //TODO: move upward
-                        let frame = CGRect(x: Double(pic.position.x) * grid_size + 1, y: Double(pic.position.y) * grid_size + 1, width: Double(pic.size.width) * grid_size - 1, height: Double(pic.size.height) * grid_size - 1)
+                        _ = CGRect(x: Double(pic.position.x) * grid_size + 1, y: Double(pic.position.y) * grid_size + 1, width: Double(pic.size.width) * grid_size - 1, height: Double(pic.size.height) * grid_size - 1)
                         //image.frame = frame;
                         
                         
@@ -344,7 +344,7 @@ class ZeitPuzzle : WordPuzzle {
         
         for row in grid {
             for v in row {
-                let active = v.editable
+                _ = v.editable
                 //v.isHidden = !active
             }
         }

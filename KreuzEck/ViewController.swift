@@ -179,7 +179,7 @@ class ViewController: UIViewController {
         else {
             let numberOfStrokes = strokeGesture.strokeCollection.strokes.count
             if(numberOfStrokes == 1){
-                let possibleOneStrokeLetters = ["C","G","I","J","L","M","N","O","S","U","V","W","Z"];
+                let possibleOneStrokeLetters = ["C","G","I","J","L","M","N","O","R","S","U","V","W","Z"];
                 possibilities = possibleOneStrokeLetters
             }
         }
