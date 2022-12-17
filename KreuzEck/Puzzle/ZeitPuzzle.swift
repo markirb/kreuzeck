@@ -45,6 +45,20 @@ struct ZeitWord : Codable {
     var picture: ZeitPicture?
 }
 
+struct ZeitQuestion2 : Codable {
+    var id: Int
+    var nr: Int
+    var question: String
+    var answer: String?
+    var description: String?
+    var length: Int
+    var isSolution: Bool?
+    var picture: ZeitPicture?
+    var xc: Int
+    var yc: Int
+    var direction: String
+}
+
 struct ZeitQuestion : Codable {
     var key: Int
     var vertical: ZeitWord?
@@ -66,6 +80,13 @@ struct ZeitJsonPuzzle : Codable {
 struct ZeitList : Codable {
     var id: Int
     var spielname: String
+}
+
+struct ZeitJsonPuzzle2 : Codable {
+    var questions: [ZeitQuestion2]?
+    var isContest: Bool?
+    var name: String
+    var id: Int
 }
 
 
@@ -100,9 +121,35 @@ class ZeitPuzzle : WordPuzzle {
             self.numCols        = 25
             
         } catch {
-            print("Error: \(error)")
+            print("Error as V1, try V2: \(error)")
         }
         
+        do {
+            let json = try decoder.decode(ZeitJsonPuzzle2.self, from: parseString.data(using: .utf8)!)
+            
+            for question in json.questions! {
+                if question.direction == "h" {
+                        let q = question
+                        let qanswer = q.answer ?? String(repeating: " ", count: q.length)
+                        let w = ZWord(num: question.nr, length: q.length, column: question.xc, row: question.yc, hint: q.question, answer: qanswer, dir: .horizontal, picture: q.picture)
+                        wordsHorizontal.append(w)
+                }
+                if question.direction == "v" {
+                    let q = question
+                    let qanswer = q.answer ?? String(repeating: " ", count: q.length)
+                    let w = ZWord(num: question.nr, length: q.length, column: question.xc, row: question.yc, hint: q.question, answer: qanswer, dir: .vertical, picture: q.picture)
+                    wordsVertical.append(w)
+                }
+            }
+            
+            self.crossWordTitle = json.name
+            self.crossWordNum   = json.id
+            self.numRows        = 15
+            self.numCols        = 25
+            
+        } catch {
+            print("Error as V1, try V2: \(error)")
+        }
         
         self.cellGenerator = {
             let cell: ZeitCellView = ZeitCellView.fromNib()

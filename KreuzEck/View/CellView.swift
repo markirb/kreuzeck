@@ -13,7 +13,7 @@ import UIKit
 class CellView: UIView {
     
     //General
-    @IBOutlet var textLabel: UILabel!
+    @IBOutlet var textLabel: UITextField!
     @IBOutlet var bgView: UIView!
     
     //Decoration
