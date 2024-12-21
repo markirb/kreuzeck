@@ -62,3 +62,4 @@ extension ZeitCellView { //Utility functions
         return  (direction == .vertical) ? wordIndexVertical : wordIndexHorizontal
     }
 }
+

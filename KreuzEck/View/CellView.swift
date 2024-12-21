@@ -49,11 +49,12 @@ class CellView: UIView {
         }
     }
     
-    var content = "" {
-        didSet {
-            textLabel.text = content
-        }
-    }
+    var content = "" //{
+        //needed for restoration and undo actions
+        //didSet {
+        //    textLabel.text = content
+        //}
+    //}
     
     var solution: String? = nil
     
@@ -133,3 +134,34 @@ protocol CellViewDelegate: AnyObject
 }
 
 
+extension CellView : UITextFieldDelegate
+{
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        if (range == NSRange.init(location: 0, length: 0) ) {
+            do { //Make dependant of Input Type
+                let regex = try NSRegularExpression(pattern: "[A-Za-z]+", options: [])
+                if regex.firstMatch(in: string, options: [], range: NSMakeRange(0, string.count)) != nil {
+                    self.content = string.uppercased()
+                    return true
+                }
+                else if(string == "1") {
+                    self.content = "I";
+                    return true
+                }
+                else if(string == "0") {
+                    self.content = "O";
+                    return true
+                }
+            }
+            catch {
+                print("ERROR")
+            }
+            return false
+        }
+        else  if (string == "" ) {
+            self.content = string
+            return true
+        }
+        return false
+    }
+}

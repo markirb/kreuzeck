@@ -85,7 +85,7 @@ class CrosswordView : UIView {
             for (colIdx, char) in row.enumerated() {
                 if let c = char {
                     if(grid[rowIdx][colIdx].editable) {
-                        grid[rowIdx][colIdx].content = c;
+                        grid[rowIdx][colIdx].textLabel.text = c;
                     }
                 }
             }
@@ -93,7 +93,7 @@ class CrosswordView : UIView {
     }
     
     func save(sender: AnyObject){
-        let solution = grid.map { $0.map{ $0.content} }
+        let solution = grid.map { $0.map{ $0.textLabel.text} }
         
         guard let puzzle = puzzle else {
             return
@@ -102,7 +102,7 @@ class CrosswordView : UIView {
     }
     
     func clear(sender: AnyObject){
-        grid.forEach { $0.forEach{ $0.content = ""} }
+        grid.forEach { $0.forEach{ $0.textLabel.text = ""} }
     }
     
     func drawCrossword() {
@@ -132,6 +132,7 @@ class CrosswordView : UIView {
                 v.frame = frame;
                 self.addSubview(v)
                 v.delegate = self
+                v.textLabel.delegate = v;
             }
         }
     
@@ -260,3 +261,6 @@ extension CrosswordView: CellViewDelegate
         self.setCellSelected(cellView)
     }
 }
+
+
+

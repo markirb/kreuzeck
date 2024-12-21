@@ -153,5 +153,6 @@ struct ZeitCellViewNew_Previews: PreviewProvider {
     
         
         return CrossWordViewNew(grid: grid)
+.previewInterfaceOrientation(.portraitUpsideDown)
     }
 }

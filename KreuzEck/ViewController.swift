@@ -73,7 +73,7 @@ class ViewController: UIViewController {
         
         scrollView.contentSize = crosswordView.frame.size
 
-        crosswordView.addGestureRecognizer(strikeThroughGestureRecognizer)
+        //crosswordView.addGestureRecognizer(strikeThroughGestureRecognizer)
         strikeThroughGestureRecognizer.addTarget( self, action: #selector(strikeWord))
     
         //display current word hint
@@ -95,7 +95,10 @@ class ViewController: UIViewController {
         fingerStrokeRecognizer.cancelsTouchesInView = false
         fingerStrokeRecognizer.coordinateSpaceView = crosswordView
         fingerStrokeRecognizer.isForPencil = false
-        crosswordView.addGestureRecognizer(fingerStrokeRecognizer)
+        //crosswordView.addGestureRecognizer(fingerStrokeRecognizer)
+        
+        //let ind = UIIndirectScribbleInteraction(delegate: self)
+        //crosswordView.addInteraction(ind)
         
         let configurations = [
             { self.cgView.displayOptions = .calligraphy },
@@ -331,3 +334,25 @@ extension ViewController : UIScrollViewDelegate {
         return contentView
     }
 }
+
+extension ViewController : UIIndirectScribbleInteractionDelegate {
+    func indirectScribbleInteraction(_ interaction: UIInteraction, focusElementIfNeeded elementIdentifier: String, referencePoint focusReferencePoint: CGPoint, completion: @escaping ((UIResponder & UITextInput)?) -> Void) {
+    }
+    
+    func indirectScribbleInteraction(_ interaction: UIInteraction, isElementFocused elementIdentifier: String) -> Bool {
+        return false
+    }
+    
+    func indirectScribbleInteraction(_ interaction: UIInteraction, frameForElement elementIdentifier: String) -> CGRect {
+        return self.view.frame
+    }
+
+    func indirectScribbleInteraction(_ interaction: UIInteraction, requestElementsIn rect: CGRect, completion: @escaping ([String]) -> Void) {
+        completion(["MyView"])
+    }
+    
+    func indirectScribbleInteraction(_ interaction: UIInteraction, didFinishWritingInElement elementIdentifier: String) {
+        print()
+    }
+}
+
